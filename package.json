@@ -1,0 +1,26 @@
+{
+  "name": "vuepress-plugin-reading-progress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "plugin for vuepress",
+  "author": "tolking <qw13131wang@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/tolking/vuepress-plugin-reading-progress",
+  "bugs": {
+    "url": "https://github.com/tolking/vuepress-plugin-reading-progress/issues"
+  },
+  "homepage": "https://github.com/tolking/vuepress-plugin-reading-progress",
+  "doc": "https://ououe.com/lib/vuepress-plugin-reading-progress.html",
+  "keywords": [
+    "vue",
+    "vuepress",
+    "plugin",
+    "reading-progress",
+    "vreading",
+    "progress"
+  ],
+  "devDependencies": {
+    "@vuepress/shared-utils": "^1.0.0-alpha.39",
+    "vuepress": "^1.0.0-alpha.39"
+  }
+}
