@@ -49,7 +49,7 @@ example
   readingDir: {
     posts1: 'top',
     posts2: 'bottom',
-    posts3: 'top'
+    posts3: 'left'
   }
 }
 ```
@@ -58,7 +58,7 @@ example
 - Type: `string`
 - Default: `top`
 
-support `top`, `bottom`
+support `top`, `bottom`, `left`, `right`
 
 set position for reading progress bar
 
@@ -75,8 +75,9 @@ If you wish to apply simple color overrides to the styling
 ``` css
 $readingBgColor = transparent
 $readingZIndex = 1000
-$readingHeight = 3px
+$$readingSize = 3px
 $readingProgressColor = $accentColor
+$readingProgressImage = none
 ```
 
 ## License

@@ -1,3 +1,10 @@
 # Change Log
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
+
+## 1.0.1
+
+- optimizing: reading progress bar by `transform`
+- add: `left` and `right` in `fixed`
+- add: `$readingProgressImage`
+- change: `$readingHeight` -> `$readingSize`

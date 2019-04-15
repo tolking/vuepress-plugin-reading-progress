@@ -6,7 +6,7 @@
   >
     <div
       class="progress"
-      :style="`width:${readingTop / readingHeight * 100}%`"
+      :style="progressStyle"
     ></div>
   </div>
 </template>
@@ -16,7 +16,8 @@ export default {
   data () {
     return {
       readingTop: null,
-      readingHeight: null
+      readingHeight: null,
+      progressStyle: null
     }
   },
   watch: {
@@ -37,6 +38,7 @@ export default {
     getReadingBase () {
       this.readingHeight = this.getReadingHeight() - this.getScreenHeight()
       this.readingTop = this.getReadingTop()
+      this.progressStyle = this.getProgressStyle()
     },
     getReadingHeight () {
       return document.body.offsetHeight
@@ -53,6 +55,21 @@ export default {
       return window.pageYOffset
         || document.documentElement.scrollTop
         || document.body.scrollTop || 0
+    },
+    setProgressStyle () {
+      const progress = this.readingTop / this.readingHeight
+      switch (this.$page.readingConfig.fixed) {
+        case 'top':
+        case 'bottom':
+          return `transform: translate3D(${50 - progress * 100}%, 0, 0) scale3D(${progress}, 1, 1)`
+          break
+        case 'left':
+        case 'right':
+          return `transform: translate3D(0, ${50 - progress * 100}%, 0) scale3D(1, ${progress}, 1)`
+          break
+        default:
+          break
+      }
     }
   }
 }
@@ -61,22 +78,43 @@ export default {
 <style lang="stylus" scoped>
 $readingBgColor ?= transparent
 $readingZIndex ?= 1000
-$readingHeight ?= 3px
+$readingSize ?= 3px
 $readingProgressColor ?= $accentColor
+$readingProgressImage ?= none
 
 .reading-progress
   position fixed
   z-index $readingZIndex
+  background $readingBgColor
+  overflow hidden
+  .progress
+    width 100%
+    height 100%
+    background $readingProgressColor
+    background-image $readingProgressImage
+    transition: transform .1s ease-out
+.top
+  top 0
   left 0
   right 0
   width 100%
-  height $readingHeight
-  background $readingBgColor
-  .progress
-    height 100%
-    background $readingProgressColor
-.top
-  top 0
+  height $readingSize
 .bottom
   bottom 0
+  left 0
+  right 0
+  width 100%
+  height $readingSize
+.left
+  left 0
+  top 0
+  bottom 0
+  width $readingSize
+  height 100%
+.right
+  right 0
+  top 0
+  bottom 0
+  width $readingSize
+  height 100%
 </style>
