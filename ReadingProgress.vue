@@ -56,20 +56,35 @@ export default {
         || document.documentElement.scrollTop
         || document.body.scrollTop || 0
     },
-    setProgressStyle () {
+    getProgressStyle () {
       const progress = this.readingTop / this.readingHeight
+      const transform = ['transform', '-webkit-transform', '-moz-transform', '-o-transform', '-ms-transform']
+        .filter(item => this.supportCss(item))
+
       switch (this.$page.readingConfig.fixed) {
         case 'top':
         case 'bottom':
-          return `transform: translate3D(${50 - progress * 100}%, 0, 0) scale3D(${progress}, 1, 1)`
+          if (transform[0]) {
+            return `transform: translate(${50 - progress * 100}%, 0) scale(${progress}, 1)`
+          } else {
+            return `width: ${progress * 100}%`
+          }
           break
         case 'left':
         case 'right':
-          return `transform: translate3D(0, ${50 - progress * 100}%, 0) scale3D(1, ${progress}, 1)`
+          if (transform[0]) {
+            return `transform: translate(0, ${50 - progress * 100}%) scale(1, ${progress})`
+          } else {
+            return `height: ${progress * 100}%`
+          }
           break
         default:
           break
       }
+    },
+    supportCss (value) {
+      const div = document.createElement('div')
+      return value in div.style
     }
   }
 }
