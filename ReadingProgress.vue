@@ -15,20 +15,15 @@
 export default {
   data () {
     return {
-      readingTop: null,
-      readingHeight: null,
+      readingTop: 0,
+      readingHeight: 1,
       progressStyle: null
     }
   },
-  watch: {
-    $route() {
-      this.getReadingBase()
-    },
-  },
   mounted () {
     window.addEventListener('scroll', () => {
-      this.readingTop = this.getReadingTop()
-    }, 100)
+      this.getReadingBase()
+    }, 200)
     this.$nextTick(() => {
       this.getReadingBase()
     })
@@ -43,7 +38,6 @@ export default {
     getReadingHeight () {
       return document.body.offsetHeight
         || document.body.scrollHeight
-        || document.body.clientHeight 
         || 1
     },
     getScreenHeight () {
@@ -65,7 +59,7 @@ export default {
         case 'top':
         case 'bottom':
           if (transform[0]) {
-            return `transform: translate(${50 - progress * 100}%, 0) scale(${progress}, 1)`
+            return `transform: translate(${progress * 100 / 2 - 50}%, 0) scale(${progress}, 1)`
           } else {
             return `width: ${progress * 100}%`
           }
@@ -73,7 +67,7 @@ export default {
         case 'left':
         case 'right':
           if (transform[0]) {
-            return `transform: translate(0, ${50 - progress * 100}%) scale(1, ${progress})`
+            return `transform: translate(0, ${progress * 100 / 2 - 50}%) scale(1, ${progress})`
           } else {
             return `height: ${progress * 100}%`
           }
@@ -107,7 +101,7 @@ $readingProgressImage ?= none
     height 100%
     background $readingProgressColor
     background-image $readingProgressImage
-    transition: transform .1s ease-out
+    transition: transform .2s ease-out
 .top
   top 0
   left 0

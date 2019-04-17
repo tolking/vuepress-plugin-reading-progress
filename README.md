@@ -8,6 +8,8 @@
 
 add reading progress bar for vuepress
 
+![vuepress-plugin-reading-progress](https://ououe.com/img/vuepress_plugin_reading_progress.gif)
+
 ---
 
 ## Installation
