@@ -2,6 +2,11 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
+## 1.0.2
+
+- optimizing
+- fix bug
+
 ## 1.0.1
 
 - optimizing: reading progress bar by `transform`

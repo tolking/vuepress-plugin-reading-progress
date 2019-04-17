@@ -21,12 +21,12 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', () => {
-      this.getReadingBase()
-    }, 200)
-    this.$nextTick(() => {
-      this.getReadingBase()
-    })
+    if (this.$readingShow) {
+      this.progressStyle = this.getProgressStyle()
+      window.addEventListener('scroll', () => {
+        this.getReadingBase()
+      }, 200)
+    }
   },
   
   methods: {
@@ -38,7 +38,7 @@ export default {
     getReadingHeight () {
       return document.body.offsetHeight
         || document.body.scrollHeight
-        || 1
+        || 0
     },
     getScreenHeight () {
       return window.innerHeight
