@@ -1,13 +1,6 @@
 <template>
-  <div
-    v-if="$readingShow"
-    :class="$page.readingConfig.fixed"
-    class="reading-progress"
-  >
-    <div
-      class="progress"
-      :style="progressStyle"
-    ></div>
+  <div v-if="$readingShow" :class="$page.readingConfig.fixed" class="reading-progress">
+    <div :style="progressStyle" class="progress"></div>
   </div>
 </template>
 
@@ -17,18 +10,19 @@ export default {
     return {
       readingTop: 0,
       readingHeight: 1,
-      progressStyle: null
+      progressStyle: null,
+      transform: ['transform']
     }
   },
   mounted () {
     if (this.$readingShow) {
+      this.transform = this.getTransform()
       this.progressStyle = this.getProgressStyle()
       window.addEventListener('scroll', () => {
         this.getReadingBase()
       }, 200)
     }
   },
-  
   methods: {
     getReadingBase () {
       this.readingHeight = this.getReadingHeight() - this.getScreenHeight()
@@ -48,26 +42,28 @@ export default {
     getReadingTop () {
       return window.pageYOffset
         || document.documentElement.scrollTop
-        || document.body.scrollTop || 0
+        || document.body.scrollTop
+        || 0
+    },
+    getTransform () {
+      const transformList = ['transform', '-webkit-transform', '-moz-transform', '-o-transform', '-ms-transform']
+      return transformList.filter(item => this.supportCss(item))
     },
     getProgressStyle () {
       const progress = this.readingTop / this.readingHeight
-      const transform = ['transform', '-webkit-transform', '-moz-transform', '-o-transform', '-ms-transform']
-        .filter(item => this.supportCss(item))
-
       switch (this.$page.readingConfig.fixed) {
         case 'top':
         case 'bottom':
-          if (transform[0]) {
-            return `transform: translate(${progress * 100 / 2 - 50}%, 0) scale(${progress}, 1)`
+          if (this.transform[0]) {
+            return `${this.transform[0]}: translate(${progress * 100 / 2 - 50}%, 0) scale(${progress}, 1)`
           } else {
             return `width: ${progress * 100}%`
           }
           break
         case 'left':
         case 'right':
-          if (transform[0]) {
-            return `transform: translate(0, ${progress * 100 / 2 - 50}%) scale(1, ${progress})`
+          if (this.transform[0]) {
+            return `${this.transform[0]}: translate(0, ${progress * 100 / 2 - 50}%) scale(1, ${progress})`
           } else {
             return `height: ${progress * 100}%`
           }

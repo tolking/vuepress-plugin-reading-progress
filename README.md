@@ -1,6 +1,6 @@
 # vuepress-plugin-reading-progress
 
-> plugin for vuepress
+> a reading progress bar plugin for vuepress
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
@@ -64,7 +64,21 @@ support `top`, `bottom`, `left`, `right`
 
 set position for reading progress bar
 
-## style
+## Front matter
+
+Change the reading progress bar display of the current page by use `readingShow`
+
+``` md
+---
+readingShow: false
+---
+// or
+---
+readingShow: true
+---
+```
+
+## Style
 
 If you wish to apply simple color overrides to the styling
 
@@ -88,4 +102,4 @@ $readingProgressImage = none
 
 ## Keywords
 
-vue vuepress plugin reading-progress vreading progress
+vue vuepress plugin reading-progress reading progress
