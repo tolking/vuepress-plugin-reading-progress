@@ -2,6 +2,10 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
+## 1.0.4
+
+- fix error on the 404 page
+
 ## 1.0.3
 
 - optimizing transform

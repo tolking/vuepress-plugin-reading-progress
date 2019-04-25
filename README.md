@@ -88,12 +88,18 @@ If you wish to apply simple color overrides to the styling
     +- palette.styl
 ```
 
-``` css
+``` styl
 $readingBgColor = transparent
 $readingZIndex = 1000
-$$readingSize = 3px
+$readingSize = 3px
 $readingProgressColor = $accentColor
 $readingProgressImage = none
+```
+
+#### example
+
+``` styl
+$readingProgressImage = linear-gradient(-150deg, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%)
 ```
 
 ## License

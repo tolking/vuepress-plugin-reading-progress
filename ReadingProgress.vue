@@ -14,16 +14,29 @@ export default {
       transform: ['transform']
     }
   },
-  mounted () {
-    if (this.$readingShow) {
-      this.transform = this.getTransform()
-      this.progressStyle = this.getProgressStyle()
-      window.addEventListener('scroll', () => {
-        this.getReadingBase()
-      }, 200)
+  watch: {
+    $readingShow () {
+      this.base()
     }
   },
+  mounted () {
+    this.base()
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', () => {
+      this.getReadingBase()
+    })
+  },
   methods: {
+    base () {
+      if (this.$readingShow) {
+        this.transform = this.getTransform()
+        this.progressStyle = this.getProgressStyle()
+        window.addEventListener('scroll', () => {
+          this.getReadingBase()
+        }, 200)
+      }
+    },
     getReadingBase () {
       this.readingHeight = this.getReadingHeight() - this.getScreenHeight()
       this.readingTop = this.getReadingTop()

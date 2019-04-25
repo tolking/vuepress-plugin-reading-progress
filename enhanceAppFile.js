@@ -7,10 +7,10 @@ export default ({ Vue }) => {
       $readingShow () {
         if (this.$frontmatter.readingShow !== undefined) {
           return this.$frontmatter.readingShow
-        } else if (this.$page.readingConfig.readingShow !== undefined) {
+        } else if (this.$page.readingConfig !== undefined) {
           return this.$page.readingConfig.readingShow
         } else {
-          return true
+          return false
         }
       }
     }
