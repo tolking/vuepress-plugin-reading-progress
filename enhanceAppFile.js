@@ -18,7 +18,7 @@ export default ({ Vue }) => {
           return typeof readingShow === 'boolean' && readingShow
             ? 'top'
             : readingShow
-        } else if (fixed) {
+        } else if (regularPath) {
           if (readingDir === null) {
             return fixed
           } else if (typeof readingDir === 'string') {
