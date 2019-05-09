@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$readingShow" :class="$page.readingConfig.fixed" class="reading-progress">
+  <div v-if="$readingShow" :class="$readingShow" class="reading-progress">
     <div :style="progressStyle" class="progress"></div>
   </div>
 </template>
@@ -12,11 +12,6 @@ export default {
       readingHeight: 1,
       progressStyle: null,
       transform: ['transform']
-    }
-  },
-  watch: {
-    $readingShow () {
-      this.base()
     }
   },
   mounted () {
@@ -64,7 +59,7 @@ export default {
     },
     getProgressStyle () {
       const progress = this.readingTop / this.readingHeight
-      switch (this.$page.readingConfig.fixed) {
+      switch (this.$readingShow) {
         case 'top':
         case 'bottom':
           if (this.transform[0]) {

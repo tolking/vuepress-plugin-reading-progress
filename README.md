@@ -67,14 +67,13 @@ set position for reading progress bar
 ## Front matter
 
 Change the reading progress bar display of the current page by use `readingShow`
+- Type: `string`, `boolean`
+- Default: `null`
+- one of `top`, `bottom`, `left`, `right`, `true`, `false`
 
 ``` md
 ---
 readingShow: false
----
-// or
----
-readingShow: true
 ---
 ```
 
@@ -99,7 +98,7 @@ $readingProgressImage = none
 #### example
 
 ``` styl
-$readingProgressImage = linear-gradient(-150deg, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%)
+$readingProgressImage = linear-gradient(-120deg, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%)
 ```
 
 ## License

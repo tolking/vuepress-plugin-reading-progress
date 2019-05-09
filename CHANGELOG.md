@@ -2,6 +2,18 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
+## 1.0.5
+
+- fix errors
+- change Front matter config
+
+``` md
+---
+readingShow: // one of `top`, `bottom`, `left`, `right`, `true`, `false`
+---
+```
+
+
 ## 1.0.4
 
 - fix error on the 404 page
