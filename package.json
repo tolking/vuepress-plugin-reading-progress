@@ -1,8 +1,8 @@
 {
   "name": "vuepress-plugin-reading-progress",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
-  "description": "a reading progress bar plugin for vuepress",
+  "description": "A reading progress bar plugin for VuePress",
   "author": "tolking <qw13131wang@gmail.com>",
   "license": "MIT",
   "repository": "https://github.com/tolking/vuepress-plugin-reading-progress",

@@ -14,6 +14,11 @@ export default {
       transform: ['transform']
     }
   },
+  watch: {
+    $readingShow () {
+      this.base()
+    }
+  },
   mounted () {
     this.base()
   },

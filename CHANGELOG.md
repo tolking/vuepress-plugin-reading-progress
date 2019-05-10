@@ -2,6 +2,10 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
+## 1.0.7
+
+- fix bug
+
 ## 1.0.6
 
 - fix error on the 404 page

@@ -25,7 +25,7 @@ export default ({ Vue }) => {
             return setConfig(regularPath, readingDir, fixed)
           } else if (Array.isArray(readingDir)) {
             for (let i = 0; i < readingDir.length; i++) {
-              const item = readingDir[i];
+              const item = readingDir[i]
               const isShow = setConfig(regularPath, item, fixed)
               if (isShow) return fixed
             }
