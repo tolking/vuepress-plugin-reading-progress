@@ -4,8 +4,6 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
-**This plugin is for Vuepress 1.x which is currently in alpha**
-
 add reading progress bar for vuepress
 
 ![vuepress-plugin-reading-progress](https://ououe.com/img/vuepress_plugin_reading_progress.gif)
@@ -16,7 +14,7 @@ add reading progress bar for vuepress
 
 ``` sh
 yarn add vuepress-plugin-reading-progress
-// or
+# or
 npm i vuepress-plugin-reading-progress
 ```
 
@@ -36,7 +34,7 @@ module.exports = {
 ## Options
 
 ### readingDir
-- Type: `null`, `string`, `array`, `Object`
+- Type: `null`, `string`, `array`, `object`, `RegExp`
 - Default: `null`
 
 Specify folders that display reading progress bar
@@ -53,6 +51,9 @@ example
     posts2: 'bottom',
     posts3: 'left'
   }
+  // or RegExp
+  readingDir: /[^\/]+$/ // exclude regularPath ending with /
+  readingDir: new RegExp('[^\/]+$')
 }
 ```
 

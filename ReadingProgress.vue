@@ -23,18 +23,14 @@ export default {
     this.base()
   },
   beforeDestroy () {
-    window.removeEventListener('scroll', () => {
-      this.getReadingBase()
-    })
+    this.$readingShow && window.removeEventListener('scroll', this.getReadingBase)
   },
   methods: {
     base () {
       if (this.$readingShow) {
         this.transform = this.getTransform()
         this.progressStyle = this.getProgressStyle()
-        window.addEventListener('scroll', () => {
-          this.getReadingBase()
-        }, 200)
+        window.addEventListener('scroll', this.getReadingBase, 200)
       }
     },
     getReadingBase () {
@@ -68,7 +64,7 @@ export default {
         case 'top':
         case 'bottom':
           if (this.transform[0]) {
-            return `${this.transform[0]}: translate(${progress * 100 / 2 - 50}%, 0) scale(${progress}, 1)`
+            return `${this.transform[0]}: scaleX(${progress})`
           } else {
             return `width: ${progress * 100}%`
           }
@@ -76,7 +72,7 @@ export default {
         case 'left':
         case 'right':
           if (this.transform[0]) {
-            return `${this.transform[0]}: translate(0, ${progress * 100 / 2 - 50}%) scale(1, ${progress})`
+            return `${this.transform[0]}: scaleY(${progress})`
           } else {
             return `height: ${progress * 100}%`
           }
@@ -110,6 +106,7 @@ $readingProgressImage ?= none
     height 100%
     background $readingProgressColor
     background-image $readingProgressImage
+    transform-origin 0% 0%
     transition: transform .2s ease-out
 .top
   top 0
