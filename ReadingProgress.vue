@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'ReadingProgress',
   data () {
     return {
       readingTop: 0,

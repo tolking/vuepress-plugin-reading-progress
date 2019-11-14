@@ -1,7 +1,7 @@
 import ReadingProgress from './ReadingProgress.vue'
 
 export default ({ Vue }) => {
-  Vue.component('ReadingProgress', ReadingProgress)
+  Vue.component(ReadingProgress.name, ReadingProgress)
   Vue.mixin({
     computed: {
       $readingShow() {

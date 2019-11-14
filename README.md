@@ -37,7 +37,7 @@ module.exports = {
 - Type: `null`, `string`, `array`, `object`, `RegExp`
 - Default: `null`
 
-Specify folders that display reading progress bar
+Specify regularPath that display reading progress bar
 
 example
 ``` js
@@ -52,7 +52,8 @@ example
     posts3: 'left'
   }
   // or RegExp
-  readingDir: /[^\/]+$/ // exclude regularPath ending with /
+  readingDir: /[^\/]+$/ // exclude regularPath end with `/`
+  // or
   readingDir: new RegExp('[^\/]+$')
 }
 ```
