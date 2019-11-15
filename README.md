@@ -52,9 +52,9 @@ example
     posts3: 'left'
   }
   // or RegExp
-  readingDir: /[^\/]+$/ // exclude regularPath end with `/`
+  readingDir: /[^/]+$/ // exclude regularPath end with `/`
   // or
-  readingDir: new RegExp('[^\/]+$')
+  readingDir: new RegExp('[^/]+$')
 }
 ```
 
