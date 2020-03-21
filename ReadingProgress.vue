@@ -40,8 +40,8 @@ export default {
       this.progressStyle = this.getProgressStyle()
     },
     getReadingHeight () {
-      return document.body.offsetHeight
-        || document.body.scrollHeight
+      return document.body.scrollHeight
+        || document.body.offsetHeight
         || 0
     },
     getScreenHeight () {
@@ -52,7 +52,6 @@ export default {
     getReadingTop () {
       return window.pageYOffset
         || document.documentElement.scrollTop
-        || document.body.scrollTop
         || 0
     },
     getTransform () {

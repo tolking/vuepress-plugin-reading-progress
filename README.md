@@ -28,14 +28,14 @@ module.exports = {
 }
 ```
 
-[ Vuepress documentation](https://v1.vuepress.vuejs.org/plugin/using-a-plugin.html)
+[ Vuepress documentation](https://vuepress.vuejs.org/plugin/using-a-plugin.html)
 
 
 ## Options
 
 ### readingDir
 - Type: `null`, `string`, `array`, `object`, `RegExp`
-- Default: `null`
+- Required: `false`
 
 Specify regularPath that display reading progress bar
 
@@ -70,7 +70,7 @@ set position for reading progress bar
 
 Change the reading progress bar display of the current page by use `readingShow`
 - Type: `string`, `boolean`
-- Default: `null`
+- Required: `false`
 - one of `top`, `bottom`, `left`, `right`, `true`, `false`
 
 ``` md

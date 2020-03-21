@@ -2,6 +2,10 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
+## 1.0.9
+
+- fix bug about readingHeight
+
 ## 1.0.8
 
 - add RegExp for readingDir
