@@ -1,7 +1,9 @@
 <template>
-  <div v-if="$readingShow" :class="$readingShow" class="reading-progress">
-    <div :style="progressStyle" class="progress"></div>
-  </div>
+  <ClientOnly>
+    <div v-if="$readingShow" :class="$readingShow" class="reading-progress">
+      <div :style="progressStyle" class="progress"></div>
+    </div>
+  </ClientOnly>
 </template>
 
 <script>
@@ -12,78 +14,74 @@ export default {
       readingTop: 0,
       readingHeight: 1,
       progressStyle: null,
-      transform: ['transform']
+      transform: undefined,
+      running: false
     }
   },
   watch: {
     $readingShow () {
-      this.base()
+      this.progressStyle = this.getProgressStyle()
+      this.$readingShow && window.addEventListener('scroll', this.base)
     }
   },
   mounted () {
-    this.base()
+    this.transform = this.getTransform()
+    this.progressStyle = this.getProgressStyle()
+    this.$readingShow && window.addEventListener('scroll', this.base)
   },
   beforeDestroy () {
-    this.$readingShow && window.removeEventListener('scroll', this.getReadingBase)
+    this.$readingShow && window.removeEventListener('scroll', this.base)
   },
   methods: {
-    base () {
-      if (this.$readingShow) {
-        this.transform = this.getTransform()
-        this.progressStyle = this.getProgressStyle()
-        window.addEventListener('scroll', this.getReadingBase, 200)
+    base() {
+      if (!this.running) {
+        this.running = true
+        requestAnimationFrame(this.getReadingBase)
       }
     },
     getReadingBase () {
       this.readingHeight = this.getReadingHeight() - this.getScreenHeight()
       this.readingTop = this.getReadingTop()
       this.progressStyle = this.getProgressStyle()
+      this.running = false
     },
     getReadingHeight () {
-      return document.body.scrollHeight
-        || document.body.offsetHeight
-        || 0
+      return Math.max(document.body.scrollHeight, document.body.offsetHeight, 0)
     },
     getScreenHeight () {
-      return window.innerHeight
-        || document.documentElement.clientHeight
-        || 0
+      return Math.max(window.innerHeight, document.documentElement.clientHeight, 0)
     },
     getReadingTop () {
-      return window.pageYOffset
-        || document.documentElement.scrollTop
-        || 0
+      return Math.max(window.pageYOffset, document.documentElement.scrollTop, 0)
     },
     getTransform () {
+      const div = document.createElement('div')
       const transformList = ['transform', '-webkit-transform', '-moz-transform', '-o-transform', '-ms-transform']
-      return transformList.filter(item => this.supportCss(item))
+      return transformList.find(item => item in div.style) || undefined
     },
     getProgressStyle () {
       const progress = this.readingTop / this.readingHeight
       switch (this.$readingShow) {
         case 'top':
         case 'bottom':
-          if (this.transform[0]) {
-            return `${this.transform[0]}: scaleX(${progress})`
+          if (this.transform) {
+            return `${this.transform}: scaleX(${progress})`
           } else {
             return `width: ${progress * 100}%`
           }
           break
         case 'left':
         case 'right':
-          if (this.transform[0]) {
-            return `${this.transform[0]}: scaleY(${progress})`
+          if (this.transform) {
+            return `${this.transform}: scaleY(${progress})`
           } else {
             return `height: ${progress * 100}%`
           }
           break
         default:
+          return null
           break
       }
-    },
-    supportCss (value) {
-      const div = document.createElement('div')
-      return value in div.style
     }
   }
 }

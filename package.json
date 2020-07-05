@@ -1,7 +1,8 @@
 {
   "name": "vuepress-plugin-reading-progress",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "index.js",
+  "type": "commonjs",
   "description": "A reading progress bar plugin for VuePress",
   "author": "tolking <qw13131wang@gmail.com>",
   "license": "MIT",
@@ -10,17 +11,12 @@
     "url": "https://github.com/tolking/vuepress-plugin-reading-progress/issues"
   },
   "homepage": "https://github.com/tolking/vuepress-plugin-reading-progress",
-  "doc": "https://github.com/tolking/vuepress-plugin-reading-progress",
+  "doc": "https://github.com/tolking/vuepress-plugin-reading-progress#readme",
   "keywords": [
-    "vue",
     "vuepress",
     "plugin",
     "reading-progress",
     "reading",
     "progress"
-  ],
-  "devDependencies": {
-    "@vuepress/shared-utils": "^1.0.0",
-    "vuepress": "^1.0.0"
-  }
+  ]
 }

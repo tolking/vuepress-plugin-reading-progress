@@ -61,6 +61,7 @@ example
 ### fixed
 - Type: `string`
 - Default: `top`
+- Required: `false`
 
 support `top`, `bottom`, `left`, `right`
 
@@ -106,7 +107,3 @@ $readingProgressImage = linear-gradient(-120deg, #E50743 0%, #F9870F 15%, #E8ED3
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-## Keywords
-
-vue vuepress plugin reading-progress reading progress

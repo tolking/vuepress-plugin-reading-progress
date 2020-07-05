@@ -1,4 +1,4 @@
-const { path } = require('@vuepress/shared-utils')
+const path = require('path')
 
 function checkRegularPath(regularPath, readingDir, fixed) {
   if (readingDir === null) {

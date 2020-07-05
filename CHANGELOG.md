@@ -2,6 +2,10 @@
 
 [README](README.md) | [CHANGELOG](CHANGELOG.md)
 
+## 1.0.10
+
+- optimize performance by requestAnimationFrame
+
 ## 1.0.9
 
 - fix bug about readingHeight
@@ -28,7 +32,6 @@
 readingShow: // one of `top`, `bottom`, `left`, `right`, `true`, `false`
 ---
 ```
-
 
 ## 1.0.4
 
